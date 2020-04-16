@@ -8,7 +8,7 @@ function PlaceMarker(props) {
             <Popup>
                 <b>Tên: </b> {props.name} <br/>
                 <b>Địa chỉ: </b> {props.address} <br/>
-                <b>Ngày phát hiện: </b> {props.date} <br/>
+                <b>Ngày phát hiện: </b> {props.comfirmDate} <br/>
                 <b>Ghi chú: </b> {props.description} <br/>
             </Popup>
         </Marker>
@@ -16,3 +16,5 @@ function PlaceMarker(props) {
 
     return marker;
 }
+
+export default PlaceMarker;

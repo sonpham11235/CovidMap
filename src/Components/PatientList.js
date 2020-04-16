@@ -1,5 +1,5 @@
 import React from 'react';
-import { Marker, Popup } from 'react-leaflet';
+import Marker from './Marker';
 
 class PatientList extends React.Component {
     constructor(props) {
@@ -16,5 +16,18 @@ class PatientList extends React.Component {
         };
     }
 
-    
+    renderMarker(i) {
+        return (
+            <Marker
+                lattitude = {this.state.patients[i].lattitude}
+                longtitude = {this.state.patients[i].longtitude}
+                name = {this.state.patients[i].name}
+                address = {this.state.patients[i].address}
+                comfirmDate = {this.state.patients[i].comfirmDate}
+                description = {this.state.patients[i].description}
+            />
+        );
+    }
 }
+
+export default PatientList;
