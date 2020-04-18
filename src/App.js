@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { render } from 'react-dom'
 import { Map, TileLayer } from 'react-leaflet'
-import PatientList from './Components/PatientList';
 
 class App extends React.Component {
   renderMap() {
