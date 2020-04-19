@@ -36,21 +36,44 @@ class PatientList extends React.Component {
     }
 
     getPatientInfo() {
+        let myData = {};
         let request = new XMLHttpRequest();
-        request.open('GET','https://maps.vnpost.vn/apps/covid19/api/patientapi/list');
+        request.open('GET','https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list');
         request.onload = () => {
-            const myData = JSON.parse(request.responseText);
-            this.setState({
-                patientData: myData.data,
-            });
+            myData = JSON.parse(request.responseText);
         };
         request.send();
+
+        this.setState({
+            patientData: myData.data,
+        });
+
+        console.log(this.state.patientData);
+    }
+
+    fetchPatientInfo() {
+        fetch("https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list",
+            {Headers: new Headers({
+                'Origin': 'localhost:3000'
+            })})
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        patientData: result.data,
+                    });
+                },
+
+                (error) => {
+                    console.log('an lon real');
+                }
+            )
     }
 
     render() {
-        this.getPatientInfo();
+        this.fetchPatientInfo();
 
-        return (
+        return(
             <div>
                 {this.renderAllMarkers()}
             </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { render } from 'react-dom'
 import { Map, TileLayer } from 'react-leaflet'
+import PatientList from './Components/PatientList';
 
 class App extends React.Component {
   renderMap() {
@@ -12,6 +13,7 @@ class App extends React.Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
+        <PatientList/>
       </Map>
     );
 
