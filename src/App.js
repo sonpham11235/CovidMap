@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import { render } from 'react-dom'
 import { Map, TileLayer } from 'react-leaflet'
-import PatientMarkers from './Components/PatientMarker';
+import PatientMarkers from './Components/PatientMarker'
+import Patient from './Components/Patient'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,9 +33,9 @@ class App extends React.Component {
         )
   }
 
-  renderMap(centerPos) {
+  renderMap() {
     const map = (
-      <Map center={centerPos} zoom={13}>
+      <Map center={this.state.centerPos} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -48,12 +49,24 @@ class App extends React.Component {
     return map;
   }
 
-
-
   render() {
     this.fetchPatientInfo();
+    const patientList = this.state.patientData.map(patient => {
+      return (
+        <Patient patientName={patient.name}/>
+      );
+    });
 
-    return this.renderMap(this.state.centerPos);
+    return (
+      <div class='app-container'>
+        <div class='patient-list'>
+          <ul>
+            {patientList}
+          </ul>
+        </div>
+        {this.renderMap()}
+      </div>
+    )
   }
 }
 

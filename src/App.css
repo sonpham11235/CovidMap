@@ -1,4 +1,22 @@
 .leaflet-container {
-  width: 100%;
+  display: flex;
+  width: 80%;
   height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: horizontal;
+}
+
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+}
+
+.btn-patient {
+  width: 100%;
+  height: max-content;
 }
