@@ -2,8 +2,8 @@ import React from 'react';
 
 function Patient(props) {
     return (
-        <li class='btn-patient'>
-            <button>
+        <li>
+            <button className='btn-patient' onClick={props.onClick}>
                 {props.patientName}
             </button>
         </li>

@@ -49,19 +49,37 @@ class App extends React.Component {
     return map;
   }
 
+  renderPatientList() {
+    let patientList = [];
+    const patientData = this.state.patientData.slice();
+
+    for (let i = 0; i < patientData.length; i++) {
+      patientList.push(
+        <Patient
+          patientName={patientData[i].name}
+          onClick={() => this.handleClick(patientData[i])}
+          />
+      )
+    }
+
+    return patientList;
+  }
+
+  handleClick(patient) {
+    this.setState({
+      centerPos: [patient.lat, patient.lng],
+    })
+  }
+
   render() {
     this.fetchPatientInfo();
-    const patientList = this.state.patientData.map(patient => {
-      return (
-        <Patient patientName={patient.name}/>
-      );
-    });
+    const patientList = this.renderPatientList();
 
     return (
-      <div class='app-container'>
-        <div class='patient-list'>
+      <div className='app-container'>
+        <div className='patient-list'>
           <ul>
-            {patientList}
+            {this.renderPatientList()}
           </ul>
         </div>
         {this.renderMap()}
