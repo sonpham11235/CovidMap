@@ -11,26 +11,14 @@ class App extends React.Component {
     this.state = {
         patientData: [],
         centerPos: [10.776530, 106.700981],
+        currentPatient: null,
     };
   }
 
   fetchPatientInfo() {
-    fetch("https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list",
-        {Headers: new Headers({
-            'Origin': 'localhost:3000'
-        })})
-        .then(res => res.json())
-        .then(
-            (result) => {
-                this.setState({
-                    patientData: result.data,
-                });
-            },
-
-            (error) => {
-                console.log('Cannot retrieve data from server');
-            }
-        )
+    fetch('/list')
+      .then(res => res.json())
+      .then(json => this.setState({patientData: json.data.sort((a,b) => a.verifyDate > b.verifyDate)}));
   }
 
   renderMap() {
@@ -68,7 +56,23 @@ class App extends React.Component {
   handleClick(patient) {
     this.setState({
       centerPos: [patient.lat, patient.lng],
+      currentPatient: patient,
     })
+  }
+
+  renderCurrentPatient() {
+    const patient = this.state.currentPatient;
+
+    if (this.state.currentPatient != null) {
+      return (
+        <div className='patientInfo'>
+          <b>Tên: </b> {patient.name} <br/>
+          <b>Địa chỉ: </b> {patient.address} <br/>
+          <b>Ngày phát hiện: </b> {patient.verifyDate} <br/>
+          <b>Ghi chú: </b> {patient.note} <br/>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -78,8 +82,9 @@ class App extends React.Component {
     return (
       <div className='app-container'>
         <div className='patient-list'>
+          {this.renderCurrentPatient()}
           <ul>
-            {this.renderPatientList()}
+            {patientList}
           </ul>
         </div>
         {this.renderMap()}
