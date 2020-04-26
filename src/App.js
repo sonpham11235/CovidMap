@@ -23,7 +23,7 @@ class App extends React.Component {
 
   renderMap() {
     const map = (
-      <Map center={this.state.centerPos} zoom={13}>
+      <Map center={this.state.centerPos} zoom={13} className='item1'>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -65,11 +65,20 @@ class App extends React.Component {
 
     if (this.state.currentPatient != null) {
       return (
-        <div className='patientInfo'>
+        <div>
           <b>Tên: </b> {patient.name} <br/>
           <b>Địa chỉ: </b> {patient.address} <br/>
           <b>Ngày phát hiện: </b> {patient.verifyDate} <br/>
           <b>Ghi chú: </b> {patient.note} <br/>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <b>Tên: </b> <span> </span> <br/>
+          <b>Địa chỉ: </b> <span> </span> <br/>
+          <b>Ngày phát hiện: </b> <span> </span> <br/>
+          <b>Ghi chú: </b> <span> </span> <br/>
         </div>
       )
     }
@@ -77,17 +86,24 @@ class App extends React.Component {
 
   render() {
     this.fetchPatientInfo();
-    const patientList = this.renderPatientList();
 
     return (
-      <div className='app-container'>
-        <div className='patient-list'>
+      <div className='grid-container'>
+        {this.renderMap()}
+        <div className='item2'>
           {this.renderCurrentPatient()}
+        </div>
+        <div className='item3'>
           <ul>
-            {patientList}
+            {this.renderPatientList()}
           </ul>
         </div>
-        {this.renderMap()}
+        <div className='item4'>
+          white
+        </div>
+        <div className='item5'>
+          violet
+        </div>
       </div>
     )
   }
