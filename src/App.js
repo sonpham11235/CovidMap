@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { Map, TileLayer } from 'react-leaflet'
 import PatientMarkers from './Components/PatientMarker'
 import Patient from './Components/Patient'
+import Slider from 'react-rangeslider'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends React.Component {
         patientData: [],
         centerPos: [10.776530, 106.700981],
         currentPatient: null,
+        progress: 100,
     };
   }
 
@@ -84,6 +86,12 @@ class App extends React.Component {
     }
   }
 
+  handleOnChange = (percentage) => {
+    this.setState({
+      progress: percentage
+    })
+  }
+
   render() {
     this.fetchPatientInfo();
 
@@ -102,7 +110,11 @@ class App extends React.Component {
           white
         </div>
         <div className='item5'>
-          violet
+          <Slider
+            value = {this.state.progress}
+            orientation = "horizontal"
+            onChange = {this.handleOnChange}
+          />
         </div>
       </div>
     )

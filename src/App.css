@@ -35,7 +35,6 @@
 .item5 {
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color: blueviolet;
   grid-column-start: 2;
   grid-column-end: 6;
 }
