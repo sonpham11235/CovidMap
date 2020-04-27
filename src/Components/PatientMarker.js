@@ -19,10 +19,15 @@ class PatientMarkers extends React.Component {
 
     renderAllMarkers() {
         let markers = [];
+        let verifyDate = new Date();
         const patientData = this.props.patientData;
 
         for (let i = 0; i < patientData.length; i++) {
-            markers.push(this.renderMarker(i));
+            verifyDate = new Date(patientData[i].verifyDate);
+
+            if (verifyDate.getTime() < this.props.targetDate) {
+                markers.push(this.renderMarker(i));
+            }
         }
 
         return markers;
