@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   fetchPatientInfo() {
-    fetch('/list')
+    fetch('https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list')
       .then(res => res.json())
       .then(json => {
         this.setState({
