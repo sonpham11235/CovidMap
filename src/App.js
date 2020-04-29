@@ -21,40 +21,20 @@ class App extends React.Component {
     };
   }
 
-  // fetchPatientInfo() {
-  //   fetch('/list')
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       this.setState({
-  //         patientData: json.data.sort((a,b) => (new Date(a.verifyDate).getTime()) > (new Date(b.verifyDate).getTime()))
-  //       });
-  //     });
-  // }
-
   fetchPatientInfo() {
     fetch('/list')
+<<<<<<< HEAD
       .then(res => res.text)
       .then(text => console.log(text));
+=======
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          patientData: json.data.sort((a,b) => (new Date(a.verifyDate).getTime()) > (new Date(b.verifyDate).getTime()))
+        });
+      });
+>>>>>>> parent of 4cf3af1b... run test
   }
-
-  // fetchPatientStupid() {
-  //   fetch("https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list",
-  //     {headers: new Headers({
-  //       'Origin': 'localhost:3000'
-  //     })})
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         this.setState({
-  //           patientData: result.data,
-  //         });
-  //       },
-
-  //       (error) => {
-  //         console.log("error");
-  //       }
-  //     )
-  // }
 
   renderMap() {
     let targetDate = this.percentageIntoDate(this.state.progress);
