@@ -17,13 +17,18 @@ class App extends React.Component {
         startDate: new Date(2019, 12, 8),
         currentDate: new Date(),
         targetDate: new Date(),
+        isPlaying: false,
     };
   }
 
   fetchPatientInfo() {
     fetch('/list')
       .then(res => res.json())
-      .then(json => this.setState({patientData: json.data.sort((a,b) => (a.verifyDate) > b.verifyDate)}));
+      .then(json => {
+        this.setState({
+          patientData: json.data.sort((a,b) => (new Date(a.verifyDate).getTime()) > (new Date(b.verifyDate).getTime()))
+        });
+      });
   }
 
   renderMap() {
@@ -101,9 +106,51 @@ class App extends React.Component {
   }
 
   handleOnChange = (percentage) => {
+    let date  = this.percentageIntoDate();
+
     this.setState({
-      progress: percentage
+      progress: percentage,
+      targetDate: date,
     })
+  }
+
+  handlePlay = () => {
+    console.log("play")
+
+    this.setState({
+      isPlaying: true,
+      progress: 0,
+    })
+  }
+
+  handlePause = () => {
+    console.log("pause")
+    this.setState({
+      isPlaying: false,
+    })
+  }
+
+  tick() {
+    if (this.state.isPlaying) {
+      this.setState({
+        progress: this.state.progress + 1,
+      })
+    }
+
+    if (this.state.progress >= 100) {
+      this.setState({
+        progress: 100,
+        isPlaying: false,
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   dateIntoPercentage = (date) => {
@@ -123,7 +170,6 @@ class App extends React.Component {
     let inMS = ((percentage / 100) * (currentDateInMS - startDateInMS)) + startDateInMS;
 
     let result = new Date(inMS);
-    console.log();
     return result;
   }
 
@@ -142,13 +188,19 @@ class App extends React.Component {
           </ul>
         </div>
         <div className='item4'>
-          white
+          <button onClick={this.handlePlay}>
+            Play
+          </button>
+          <button onClick={this.handlePause}>
+            Pause
+          </button>
         </div>
         <div className='item5'>
           <Slider
             min = {0}
             max = {100}
             value = {this.state.progress}
+            tooltip = {false}
             orientation = "horizontal"
             onChange = {this.handleOnChange}
           />
