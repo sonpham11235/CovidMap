@@ -23,17 +23,12 @@ class App extends React.Component {
 
   fetchPatientInfo() {
     fetch('/list')
-<<<<<<< HEAD
-      .then(res => res.text)
-      .then(text => console.log(text));
-=======
       .then(res => res.json())
       .then(json => {
         this.setState({
           patientData: json.data.sort((a,b) => (new Date(a.verifyDate).getTime()) > (new Date(b.verifyDate).getTime()))
         });
       });
->>>>>>> parent of 4cf3af1b... run test
   }
 
   renderMap() {
