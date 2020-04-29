@@ -33,8 +33,8 @@ class App extends React.Component {
 
   fetchPatientInfo() {
     fetch('/list')
-      .then(res => res.text
-      .then(text => console.log(text))
+      .then(res => res.text)
+      .then(text => console.log(text));
   }
 
   // fetchPatientStupid() {
