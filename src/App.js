@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import PatientMap from './Components/PatientMap';
+import Statistic from './Components/Statistic';
 
 import {
   BrowserRouter as Router,
@@ -12,7 +13,16 @@ import {
 class App extends React.Component {
   render() {
     return(
-      <PatientMap/>
+      <Router>
+        <Switch>
+          <Route path="/map">
+            <PatientMap />
+          </Route>
+          <Route path="/statistic">
+            <Statistic />
+          </Route>
+        </Switch>
+      </Router>
     )
   }
 }

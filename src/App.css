@@ -1,11 +1,12 @@
+/* Map site css */
 .leaflet-container {
   width: 95%;
   height: 95%;
 }
 
 .item1 {
-  grid-row-start: 1;
-  grid-row-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 4;
 }
@@ -13,21 +14,21 @@
 .item2 {
   grid-column-start: 4;
   grid-column-end: 6;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .item3 {
   grid-column-start: 4;
   grid-column-end: 6;
-  grid-row-start: 3;
-  grid-row-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 6;
   overflow-y: scroll;
 }
 
 .item4 {
-  grid-row-start: 5;
-  grid-row-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 7;
   grid-column-start: 1;
   grid-column-end: 2;
   display: flex;
@@ -35,15 +36,17 @@
 }
 
 .item5 {
-  grid-row-start: 5;
-  grid-row-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 7;
   grid-column-start: 2;
   grid-column-end: 6;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: horizontal;
+.item6 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
 
 .grid-container {
@@ -77,3 +80,13 @@ ul li {
   display: flex;
   width: inherit;
 } 
+
+/* Statistic site css */
+statistic-container {
+  display: grid;
+  grid-gap: 5px; 
+  padding: 8px;
+  width: 95%;
+  height: 95vh;
+}
+

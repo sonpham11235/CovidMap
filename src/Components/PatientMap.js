@@ -175,6 +175,14 @@ class PatientMap extends React.Component {
     render() {
         return (
             <div className='grid-container'>
+                <div className='item6'>
+                  <button>
+                    Covid Map
+                  </button>
+                  <button>
+                    Covid Stats
+                  </button>
+                </div>
                 {this.renderMap()}
                 <div className='item2'>
                     {this.renderCurrentPatient()}
@@ -185,12 +193,12 @@ class PatientMap extends React.Component {
                 </ul>
                 </div>
                 <div className='item4'>
-                <button onClick={this.handlePlay}>
-                    Play
-                </button>
-                <button onClick={this.handlePause}>
-                    Pause
-                </button>
+                  <button onClick={this.handlePlay}>
+                      Play
+                  </button>
+                  <button onClick={this.handlePause}>
+                      Pause
+                  </button>
                 </div>
                 <div className='item5'>
                 <Slider
