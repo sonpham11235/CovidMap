@@ -5,8 +5,6 @@ import Patient from './Patient'
 import Slider from 'react-rangeslider'
 import NavButton from './NavButton'
 
-import {Link} from 'react-router-dom';
-
 class PatientMap extends React.Component {
     constructor(props) {
         super(props);

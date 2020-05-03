@@ -16,8 +16,19 @@ class Statistic extends React.Component {
         fetch('https://cors-anywhere.herokuapp.com/https://td.fpt.ai/corona/corona-chart-vn.json')
           .then(res => res.json())
           .then(json => {
+            let vnData = [];
+            let day = [];
+            const keys = Object.keys(json);
+
+            for (let i = 0; i < keys.length; i++) {
+              day = Object.values(json)[i];
+              vnData.push(day[0]);
+              vnData.push(day[1]);
+              vnData.push(day[2]);
+            }
+
             this.setState({
-              patientData: json
+              vnData: vnData,
             });
         });
     }
@@ -45,6 +56,8 @@ class Statistic extends React.Component {
     componentDidMount() {
         this.fetchVNData();
         this.fetchWorldData();
+
+        console.log(this.state.vnData);
     }
 
     render() {
@@ -52,7 +65,7 @@ class Statistic extends React.Component {
           <div className="statistic-container">
               <NavButton />
               {/* <div>
-                <Chart data={this.prepareVNData()}/>
+                <Chart/>
               </div> */}
           </div>
         )
