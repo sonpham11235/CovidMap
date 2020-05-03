@@ -101,3 +101,12 @@ ul li {
   height: 95vh;
 }
 
+.VnChart {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.GlobalChart {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}

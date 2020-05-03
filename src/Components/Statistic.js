@@ -83,10 +83,10 @@ class Statistic extends React.Component {
 
     prepareWorldDataCC() {
       let confirmedCases = []
-      const vnData = this.state.vnData;
+      const worldData = this.state.worldData;
 
-      for (let i = 0; i < vnData.length; i++) {
-        confirmedCases.push(vnData[i][0]);
+      for (let i = 0; i < worldData.length; i++) {
+        confirmedCases.push(worldData[i][0]);
       }
 
       return confirmedCases;
@@ -94,10 +94,10 @@ class Statistic extends React.Component {
 
     prepareWorldDataSC() {
       let suspectCases = []
-      const vnData = this.state.vnData;
+      const worldData = this.state.worldData;
 
-      for (let i = 0; i < vnData.length; i++) {
-        suspectCases.push(vnData[i][1]);
+      for (let i = 0; i < worldData.length; i++) {
+        suspectCases.push(worldData[i][1]);
       }
 
       return suspectCases;
@@ -105,10 +105,10 @@ class Statistic extends React.Component {
 
     prepareWorldDataCured() {
       let cured = []
-      const vnData = this.state.vnData;
+      const worldData = this.state.worldData;
 
-      for (let i = 0; i < vnData.length; i++) {
-        cured.push(vnData[i][2]);
+      for (let i = 0; i < worldData.length; i++) {
+        cured.push(worldData[i][2]);
       }
 
       return cured;
@@ -123,7 +123,7 @@ class Statistic extends React.Component {
         return(
           <div className="statistic-container">
               <NavButton />
-              <div>
+              <div className="VNChart">
                 <Chart
                   days={this.state.vnData.length}
                   confirmedCases={this.prepareVNDataCC()}
@@ -131,7 +131,7 @@ class Statistic extends React.Component {
                   curedCases={this.prepareVNDataCured()}
                 />
               </div>
-              <div>
+              <div className="GlobalChart">
                 <Chart
                   days={this.state.worldData.length}
                   confirmedCases={this.prepareWorldDataCC()}
