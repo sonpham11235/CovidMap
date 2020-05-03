@@ -1,4 +1,6 @@
 import React from 'react'
+import NavButton from './NavButton'
+import Chart from './Chart'
 
 class Statistic extends React.Component {
     constructor(props) {
@@ -30,6 +32,16 @@ class Statistic extends React.Component {
         });
     }
 
+    prepareVNData() {
+      let Data = [];
+
+      for (let i = 0; i < this.state.vnData.length; i++) {
+        Data.push(this.state.vnData[i][0]);
+      }
+
+      return Data;
+    }
+
     componentDidMount() {
         this.fetchVNData();
         this.fetchWorldData();
@@ -37,16 +49,12 @@ class Statistic extends React.Component {
 
     render() {
         return(
-            <div className="statistic-container">
-                <div className='item6'>
-                  <button>
-                    Covid Map
-                  </button>
-                  <button>
-                    Covid Stats
-                  </button>
-                </div>
-            </div>
+          <div className="statistic-container">
+              <NavButton />
+              {/* <div>
+                <Chart data={this.prepareVNData()}/>
+              </div> */}
+          </div>
         )
     }
 }

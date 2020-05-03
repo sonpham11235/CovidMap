@@ -79,10 +79,21 @@ ul {
 ul li {
   display: flex;
   width: inherit;
-} 
+}
+
+.button-container {
+  display: flex;
+  align-content: center;
+}
+
+.switch-button {
+  width: 50%;
+  padding: 5px;
+  height: 100%;
+}
 
 /* Statistic site css */
-statistic-container {
+.statistic-container {
   display: grid;
   grid-gap: 5px; 
   padding: 8px;

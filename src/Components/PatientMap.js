@@ -3,6 +3,9 @@ import { Map, TileLayer } from 'react-leaflet'
 import PatientMarkers from './PatientMarker'
 import Patient from './Patient'
 import Slider from 'react-rangeslider'
+import NavButton from './NavButton'
+
+import {Link} from 'react-router-dom';
 
 class PatientMap extends React.Component {
     constructor(props) {
@@ -175,14 +178,7 @@ class PatientMap extends React.Component {
     render() {
         return (
             <div className='grid-container'>
-                <div className='item6'>
-                  <button>
-                    Covid Map
-                  </button>
-                  <button>
-                    Covid Stats
-                  </button>
-                </div>
+                <NavButton />
                 {this.renderMap()}
                 <div className='item2'>
                     {this.renderCurrentPatient()}
@@ -193,10 +189,10 @@ class PatientMap extends React.Component {
                 </ul>
                 </div>
                 <div className='item4'>
-                  <button onClick={this.handlePlay}>
+                  <button className='switch-button' onClick={this.handlePlay}>
                       Play
                   </button>
-                  <button onClick={this.handlePause}>
+                  <button className='switch-button' onClick={this.handlePause}>
                       Pause
                   </button>
                 </div>
