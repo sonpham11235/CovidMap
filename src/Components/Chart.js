@@ -17,17 +17,17 @@ class Chart extends React.Component {
             labels: this.prepDataLabels(),
             datasets: [
                 {
-                    label: "Confirmed Cases",
+                    label: this.props.label1,
                     backgroundColor: "rgba(255, 0, 255, 0.75)",
                     data: this.props.confirmedCases,
                 },
                 {
-                    label: "Suspect Cases",
+                    label: this.props.label2,
                     backgroundColor: "rgba(255, 255, 0, 0.75)",
                     data: this.props.suspectCases,
                 },
                 {
-                    label: "Cured Cases",
+                    label: this.props.label3,
                     backgroundColor: "rgba(0, 255, 255, 0.75)",
                     data: this.props.curedCases,
                 },
@@ -47,7 +47,7 @@ class Chart extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="chart-container">
                 <Line
                     options={this.prepOptions()}
                     data={this.prepChart()}

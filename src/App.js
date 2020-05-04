@@ -14,7 +14,7 @@ class App extends React.Component {
     return(
       <Router>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/CovidMap" exact>
             <PatientMap />
           </Route>
           <Route path="/map">

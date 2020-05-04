@@ -123,12 +123,15 @@ class Statistic extends React.Component {
         return(
           <div className="statistic-container">
               <NavButton />
-              <div className="VNChart">
+              <div className="VnChart">
                 <Chart
                   days={this.state.vnData.length}
                   confirmedCases={this.prepareVNDataCC()}
                   suspectCases={this.prepareVNDataSC()}
                   curedCases={this.prepareVNDataCured()}
+                  label1="Confirmed Cases"
+                  label2="Suspects Cases"
+                  label3="Recovered Cases"
                 />
               </div>
               <div className="GlobalChart">
@@ -137,6 +140,9 @@ class Statistic extends React.Component {
                   confirmedCases={this.prepareWorldDataCC()}
                   suspectCases={this.prepareWorldDataSC()}
                   curedCases={this.prepareWorldDataCured()}
+                  label1="Confirmed Cases"
+                  label2="Deaths"
+                  label3="Recovered Cases"
                 />
               </div>
           </div>

@@ -110,3 +110,7 @@ ul li {
   grid-column-start: 1;
   grid-column-end: 6;
 }
+
+.chart-container {
+  width: 100%;
+}
