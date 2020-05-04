@@ -20,7 +20,7 @@ class App extends React.Component {
           <Route path="/map">
             <PatientMap />
           </Route>
-          <Route path="/statistic">
+          <Route path="/stats">
             <Statistic />
           </Route>
         </Switch>
