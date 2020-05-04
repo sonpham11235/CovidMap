@@ -10,7 +10,7 @@ class NavButton extends React.Component {
                         Covid Map
                     </button>
                 </Link>
-                <Link to="/statistic">
+                <Link to="/stats">
                     <button className='switch-button'>
                         Covid Stats
                     </button>
